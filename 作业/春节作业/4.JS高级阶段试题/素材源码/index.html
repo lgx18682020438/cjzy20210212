@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES5 新增函数数据筛选</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+    <main>
+        <h1>┏ (^ω^)=☞ ES5 新增函数数据筛选</h1>
+        <div class="search">
+            <div class="search-box price">
+                    <label for="">价格区间</label>
+                    <input class="price-min" type="number" placeholder="最少" min="0" />
+                    <label for="">至</label>
+                    <input class="price-max" type="number" placeholder="最大" min="0" />
+                    <button class="price-filter-btn"><i class="fa fa-filter" aria-hidden="true"></i>&ensp;筛选</button>
+            </div>
+            <div class="search-box name">
+                <label for="">名称</label>
+                <input class="phone-name" type="text" class="name" placeholder="商品名称" />
+                <button class="name-search-btn"><i class="fa fa-search" aria-hidden="true"></i>&ensp;搜索</button>
+            </div>
+            <div class="product-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>商品名称</th>
+                            <th>价格</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <h2>价格横向对比</h2>
+        <div class="chart">
+            <img style="width: 100%;" src="./preview.png" alt="">
+        </div>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
