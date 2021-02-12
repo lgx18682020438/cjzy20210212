@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 第一题
+        var arr = ['可口可乐', '方便面', '豆腐脑', '烧烤', '冒菜', '火锅'];
+        var newArr = [];
+        for (let i = arr.length - 1; i >= 0; i--) {
+            newArr.push(arr[i]);
+        }
+
+        // 第二题
+        function getFoods(number) {
+            let arrs = arr;
+            let newArr = [];
+            for (let i = 0; i < number; i++) {
+                var a = parseInt(Math.random() * (arrs.length), 10);
+                newArr.push(arrs[a]);
+                arrs.splice(a, 1);
+            }
+        }
+        getFoods(4);
+
+        // 第三题
+        let str = 'i LoVe yOU';
+        str = str.trim().toLowerCase().replace(str[0], str[0].toUpperCase());
+
+        // 第四题
+
+        // 学生考试信息数组。
+        var students = [
+            { name: '张山', score: 97 },
+            { name: '李四', score: 87 },
+            { name: '朱培生', score: 99 },
+            { name: '张晓童', score: 60 },
+            { name: '李靖', score: 92 }
+        ];
+
+        for (let i = 0; i < students.length; i++) {
+            for (let y = i; y > 0; y--) {
+                if (students[y].score > students[y - 1].score) {
+                    [students[y - 1], students[y]] = [students[y], students[y - 1]]
+                }
+            }
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
