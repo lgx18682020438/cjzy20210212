@@ -71,7 +71,7 @@ $(function () {
         $('.add-modal').modal('hide');
     });
 
-
+    // 删除按钮
     $('.table tbody').on('click', '#delete', function () {
         if (confirm('是否要删除？')) {
             userArr = userArr.filter(v => v.id != $(this).attr('data-index'));
@@ -79,14 +79,41 @@ $(function () {
             setTible();
         }
     });
+    let index = -1;
+    // 修改按钮
+    $('.table tbody').on('click', '#option', function () {
+        index = -1;
+        // 获取下标
+        for (let i = 0; i < userArr.length; i++) {
+            if (userArr[i].id == $(this).attr('data-index')) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            $('.modal-title').text('修改用户 - ' + userArr[index].uname);
+            $('#uname1').val(userArr[index].uname);
+            $('#tel1').val(userArr[index].tel);
+            $('.edit-modal').modal('show');
+        }
+    });
+
+    // 保存按钮
+    $('.button-user-save').click(function () {
+        userArr[index].uname = $('#uname1').val();
+        userArr[index].tel = $('#tel1').val();
+        setUsers(userArr);
+        setTible();
+        $('#uname1').val('');
+        $('#tel1').val('');
+        $('.edit-modal').modal('hide');
+    });
 
 
     // 搜索按钮
     $('.button-search').click(function () {
         setTible();
     });
-
-
 
 
 });
