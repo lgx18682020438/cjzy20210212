@@ -1,5 +1,46 @@
 $(function () {
 
+    // 获取localStorage 缓存的数据
+    let getUsers = () => JSON.parse(localStorage.getItem('users'));
+
+    // 设置localStorage 缓存的数据
+    let setUsers = users => localStorage.setItem("users", JSON.stringify(users));
+
+    // 生成随机数
+    let randomNum = (minNum, maxNum) => parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+
+    // 数据渲染
+    let setTible = () => {
+        let arr = [];
+        let newArr = userArr;
+        let textboxSearch = $('.textbox-search').val();
+
+        if (textboxSearch) newArr = newArr.filter(v => v.tel.indexOf(textboxSearch) != -1);
+
+        newArr.forEach(v => {
+            arr.push(`<tr>
+                        <th scope="col">${v.id}</th>
+                        <th scope="col">${v.uname}</th>
+                        <th scope="col">${v.tel}</th>
+                        <th scope="col">正常？</th>
+                        <th scope="col">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default" id="option" data-index="${v.id}" style="border-color: royalblue; color: royalblue; border: 1px solid royalblue;">操作</button>
+                                <button type="button" class="btn btn-default" id="delete" data-index="${v.id}" style="border-color: red; color: red; border: 1px solid red;">删除</button>
+                            </div>
+                        </th>
+                     </tr>`);
+        });
+
+        $('.table tbody').html(arr.join(""));
+    }
+
+    /* 全局变量 */
+    let userArr = getUsers();
+
+    // 渲染数据
+    setTible();
+
     // 点击添加按钮
     $('.button-add').click(function () {
         $('.add-modal').modal('show');
@@ -15,28 +56,37 @@ $(function () {
         if (uname == '' || tel == '') return alert('请输入姓名和电话');
 
         // 生成随机码
-        let id = randomNum(1000,9999);
-        // 获取到缓存数据
-        let users = getUsers();
+        let id = randomNum(1000, 9999);
 
-        users.push({id,uname,tel});
-        setUsers(users);
-        alert(111);
+        userArr.push({
+            id,
+            uname,
+            tel
+        });
+        setUsers(userArr);
+
+        setTible();
         $('#uname').val("");
         $('#tel').val("");
         $('.add-modal').modal('hide');
     });
-  
 
 
-    // 获取localStorage 缓存的数据
-    let getUsers = () => JSON.parse(localStorage.getItem('users'));
+    $('.table tbody').on('click', '#delete', function () {
+        if (confirm('是否要删除？')) {
+            userArr = userArr.filter(v => v.id != $(this).attr('data-index'));
+            setUsers(userArr);
+            setTible();
+        }
+    });
 
-    // 设置localStorage 缓存的数据
-    let setUsers = users => localStorage.setItem("users",JSON.stringify(users));
 
-    // 生成随机数
-    let randomNum = (minNum, maxNum) => parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+    // 搜索按钮
+    $('.button-search').click(function () {
+        setTible();
+    });
+
+
 
 
 });
