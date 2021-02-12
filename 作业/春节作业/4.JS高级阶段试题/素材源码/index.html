@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="favicon.ico">
+    <script src="./js/echarts.min.js"></script>
 </head>
 
 <body>
@@ -16,11 +17,11 @@
         <h1>┏ (^ω^)=☞ ES5 新增函数数据筛选</h1>
         <div class="search">
             <div class="search-box price">
-                    <label for="">价格区间</label>
-                    <input class="price-min" type="number" placeholder="最少" min="0" />
-                    <label for="">至</label>
-                    <input class="price-max" type="number" placeholder="最大" min="0" />
-                    <button class="price-filter-btn"><i class="fa fa-filter" aria-hidden="true"></i>&ensp;筛选</button>
+                <label for="">价格区间</label>
+                <input class="price-min" type="number" placeholder="最少" min="0" />
+                <label for="">至</label>
+                <input class="price-max" type="number" placeholder="最大" min="0" />
+                <button class="price-filter-btn"><i class="fa fa-filter" aria-hidden="true"></i>&ensp;筛选</button>
             </div>
             <div class="search-box name">
                 <label for="">名称</label>
@@ -41,11 +42,14 @@
             </div>
         </div>
         <h2>价格横向对比</h2>
-        <div class="chart">
-            <img style="width: 100%;" src="./preview.png" alt="">
+        <div class="chart" style="width: 100%; height: 500px;">
+            <!-- <img style="width: 100%;" src="./preview.png" alt=""> -->
+            
         </div>
     </main>
     <script src="js/main.js"></script>
+ 
+
 </body>
 
 </html>
