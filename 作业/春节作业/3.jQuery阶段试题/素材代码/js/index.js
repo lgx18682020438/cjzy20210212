@@ -21,7 +21,7 @@ $(function () {
 
         users.push({id,uname,tel});
         setUsers(users);
-
+        alert(111);
         $('#uname').val("");
         $('#tel').val("");
         $('.add-modal').modal('hide');
